@@ -1,107 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Smart Pantry Manager"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="Welcome to the Smart Pantry Manager!"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/txtTitle"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="@+id/txtTitle"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart Pantry Manager"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.063" />
 
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="369dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="20dp"
-        android:text="The Smart Pantry allows you to manage your ingredients and see suggested recipes"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/txtWelcome"
-        app:layout_constraintStart_toStartOf="@+id/txtWelcome"
-        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Welcome to the Smart Pantry Manager!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
-    <TextView
-        android:id="@+id/txtPantry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="My Pantry"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txtDescription"
-        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="369dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:text="The Smart Pantry allows you to manage your ingredients and see suggested recipes"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtWelcome"
+            app:layout_constraintStart_toStartOf="@+id/txtWelcome"
+            app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
 
-    <Button
-        android:id="@+id/buttViewPantry"
-        android:layout_width="135dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="12dp"
-        android:text="View Pantry"
-        app:layout_constraintStart_toStartOf="@+id/ingredients"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients" />
+        <TextView
+            android:id="@+id/txtPantry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="My Pantry"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txtDescription"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
-    <TextView
-        android:id="@+id/ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Ingredients"
-        app:layout_constraintStart_toStartOf="@+id/txtPantry"
-        app:layout_constraintTop_toBottomOf="@+id/txtPantry" />
+        <Button
+            android:id="@+id/buttViewPantry"
+            android:layout_width="135dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="12dp"
+            android:text="View Pantry"
+            app:layout_constraintStart_toStartOf="@+id/ingredients"
+            app:layout_constraintTop_toBottomOf="@+id/ingredients" />
 
-    <TextView
-        android:id="@+id/recipeSuggest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Recipe Suggestions:"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttViewPantry"
-        app:layout_constraintTop_toBottomOf="@+id/buttViewPantry" />
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ingredients"
+            app:layout_constraintStart_toStartOf="@+id/txtPantry"
+            app:layout_constraintTop_toBottomOf="@+id/txtPantry" />
 
-    <TextView
-        android:id="@+id/recipeDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Recipes available to make"
-        app:layout_constraintStart_toStartOf="@+id/recipeSuggest"
-        app:layout_constraintTop_toBottomOf="@+id/recipeSuggest" />
+        <TextView
+            android:id="@+id/recipeSuggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Recipe Suggestions:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/buttViewPantry"
+            app:layout_constraintTop_toBottomOf="@+id/buttViewPantry" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="140dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:text="View Recipes"
-        app:layout_constraintStart_toStartOf="@+id/recipeDescription"
-        app:layout_constraintTop_toBottomOf="@+id/recipeDescription" />
+        <TextView
+            android:id="@+id/recipeDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Recipes available to make"
+            app:layout_constraintStart_toStartOf="@+id/recipeSuggest"
+            app:layout_constraintTop_toBottomOf="@+id/recipeSuggest" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:text="View Recipes"
+            app:layout_constraintStart_toStartOf="@+id/recipeDescription"
+            app:layout_constraintTop_toBottomOf="@+id/recipeDescription" />
+
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="☰"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="42dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:menu="@menu/navigation"/>
+</androidx.drawerlayout.widget.DrawerLayout>
