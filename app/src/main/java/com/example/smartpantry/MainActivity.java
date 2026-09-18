@@ -2,6 +2,7 @@ package com.example.smartpantry;
 
 import android.os.Bundle;
 import android.view.View;
+import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationView);
         btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(v -> { drawerLayout.openDrawer(navigationView);});
+        //Link My Pantry to My Pantry screen
+        navigationView.setNavigationItemSelectedListener(item -> {
+            //Check is user click "My Pantry"
+            if (item.getItemId() == R.id.nav_pantry) {
+                Intent intent = new Intent(MainActivity.this, PantryActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_add_edit) {
+                Intent intent = new Intent(MainActivity.this, EditAddIngredients.class);
+                startActivity(intent);
+            }
+            drawerLayout.closeDrawer(navigationView);
+            return true;
+        });
 
         /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
