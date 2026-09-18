@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(v -> { drawerLayout.openDrawer(navigationView);});
         //Link My Pantry to My Pantry screen
         navigationView.setNavigationItemSelectedListener(item -> {
-            //Check is user click "My Pantry"
+            //Check if user clicks "My Pantry"
             if (item.getItemId() == R.id.nav_pantry) {
                 Intent intent = new Intent(MainActivity.this, PantryActivity.class);
                 startActivity(intent);
@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.nav_add_edit) {
                 Intent intent = new Intent(MainActivity.this, EditAddIngredients.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_recipes) {
+                Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivities.class);
                 startActivity(intent);
             }
             drawerLayout.closeDrawer(navigationView);
