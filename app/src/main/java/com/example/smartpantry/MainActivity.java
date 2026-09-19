@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, PantryActivity.class);
                 startActivity(intent);
             }
-
+            //Checks if user click add/edit ingredient in navigation menu
             if (item.getItemId() == R.id.nav_add_edit) {
                 Intent intent = new Intent(MainActivity.this, EditAddIngredients.class);
                 startActivity(intent);
             }
-
+            //Checks if user clicked Suggested recipes in the navigation menu
             if (item.getItemId() == R.id.nav_recipes) {
                 Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivities.class);
                 startActivity(intent);
