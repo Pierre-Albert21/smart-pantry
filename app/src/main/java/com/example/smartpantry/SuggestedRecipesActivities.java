@@ -4,40 +4,56 @@ import android.os.Bundle;
 import android.widget.*;
 import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+
+import org.w3c.dom.Text;
 
 //Activity displaying recipes that could be made from ingredients in the pantry
 public class SuggestedRecipesActivities extends AppCompatActivity {
     PantryDatabaseHelper dbHelper;
     //TextView displaying the suggested recipes
-    TextView txtRecipeSuggestion;
+    LinearLayout recipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggested_recipes);
         //Connects TextView from XML to java
-        txtRecipeSuggestion = findViewById(R.id.txtRecipeSuggestion);
+        recipeContainer = findViewById(R.id.recipeContainer);
         //Creates database helper
         dbHelper = new PantryDatabaseHelper(this);
         //Store all recipess from the DB into arrayList
         ArrayList<Recipes> recipes = dbHelper.getRecipes();
         //Get all ingredients stored in the users pantry
         ArrayList<Ingredient> pantry = dbHelper.getIngredients();
-        String recipeTxt = "";
+        boolean foundRecipe = false;
 
         //Checks each recipe to see if it could be made
         for(Recipes recipe : recipes) {
 
             //If recipe can be made stored name in list
             if(possibleRecipeMake(recipe, pantry)) {
-                recipeTxt = recipeTxt + recipe.getRecipeName() + "\n";
+                foundRecipe = true;
+                TextView recipeText = new TextView(this);
+                recipeText.setText(recipe.getRecipeName());
+                recipeText.setTextSize(23);
+                recipeText.setPadding(11, 21, 11, 21);
+                recipeText.setOnClickListener(v -> {
+                    Intent intent = new Intent(SuggestedRecipesActivities.this, RecipeDetails.class);
+                    intent.putExtra("recipeId", recipe.getRecipeId());
+                    startActivity(intent);
+                });
+
+                recipeContainer.addView(recipeText);
             }
         }
         //If no recipes can be made show clear message to user
-        if(recipeTxt.isEmpty()) {
-            recipeTxt = "You have no suggested recipes - Add more ingredients!";
+        if(!foundRecipe) {
+            TextView noRecipeFound = new TextView(this);
+            noRecipeFound.setText("You have no suggested recipes - Add more ingredients!");
+            noRecipeFound.setTextSize(19);
+            recipeContainer.addView(noRecipeFound);
         }
-        txtRecipeSuggestion.setText(recipeTxt);
     }
 
     //Compares if pantry contains enough of a certain ingredient required for the recipe

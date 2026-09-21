@@ -7,18 +7,18 @@
     android:padding="20dp">
 
     <TextView
-        android:layout_width="246dp"
-        android:layout_height="38dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Suggested Recipes"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:gravity="center" />
 
-    <TextView
-        android:id="@+id/txtRecipeSuggestion"
+    <LinearLayout
+        android:id="@+id/recipeContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:textSize="18sp" />
+        android:orientation="vertical" />
 
 </LinearLayout>

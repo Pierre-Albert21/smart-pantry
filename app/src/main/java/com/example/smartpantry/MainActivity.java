@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivities.class);
                 startActivity(intent);
             }
+            //Checks if user clicked Recipe details in the navigation menu
+            if (item.getItemId() == R.id.nav_recipe_details) {
+                Intent intent = new Intent(MainActivity.this, RecipeDetails.class);
+                startActivity(intent);
+            }
             drawerLayout.closeDrawer(navigationView);
             return true;
         });
