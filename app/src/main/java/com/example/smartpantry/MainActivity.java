@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
         buttonViewPantry.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PantryActivity.class);
+            startActivity(intent);
         });
 
         buttonViewRecipes.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivities.class);
+            startActivity(intent);
         });
 
         int countIngredients = dbHelper.getIngredients().size();

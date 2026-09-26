@@ -47,7 +47,7 @@ public class SuggestedRecipesActivities extends AppCompatActivity {
                 recipeContainer.addView(recipeText);
             }
         }
-        //If no recipes can be made show clear message to user
+        //If no recipes can be made show clear message
         if(!foundRecipe) {
             TextView noRecipeFound = new TextView(this);
             noRecipeFound.setText("You have no suggested recipes - Add more ingredients!");
