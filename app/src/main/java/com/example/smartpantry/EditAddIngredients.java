@@ -3,6 +3,8 @@ package com.example.smartpantry;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EditAddIngredients extends AppCompatActivity {
     EditText editIngredientName;
@@ -49,12 +51,25 @@ public class EditAddIngredients extends AppCompatActivity {
         String ingredientUnit = editUnit.getText().toString().trim();
         String ingredientExpiry = editExpiryDate.getText().toString().trim();
 
+        //Checks that ingredient name contains only letters and spaces
+        if(!ingredientName.matches("[a-zA-Z ]+")) {
+            Toast.makeText(this, "Ingredient name can only contain letters and spaces", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //Checks that the input fields are not empty
         if(ingredientName.isEmpty() || ingredientQuantity.isEmpty() || ingredientUnit.isEmpty() || ingredientExpiry.isEmpty()) {
             Toast.makeText(this, "Please ensure no fields are empty!", Toast.LENGTH_SHORT).show();
             return;
         }
+        //Ensures that valid unit measurements are used.
+        if(!ingredientUnit.equalsIgnoreCase("g") && !ingredientUnit.equalsIgnoreCase("kg") && !ingredientUnit.equalsIgnoreCase("ml") && !ingredientUnit.equalsIgnoreCase("l") && !ingredientUnit.equalsIgnoreCase("piece")) {
+            Toast.makeText(this, "Units accepted are only (kg, g, ml, l and piece)", Toast.LENGTH_SHORT).show();
+            return;
+        }
         double ingredientQuantityDouble;
+
         //Error handling to convert String to double
+        //Also checks that quantity is valid
         try {
             ingredientQuantityDouble = Double.parseDouble(ingredientQuantity);
         } catch (NumberFormatException er){
@@ -64,6 +79,16 @@ public class EditAddIngredients extends AppCompatActivity {
         //Checks that quantity is more than 0
         if (ingredientQuantityDouble <= 0) {
             Toast.makeText(this, "Quantity must be higher than 0", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Checks that expiry date is actually valid
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
+        formatDate.setLenient(false);
+        try {
+            Date date = formatDate.parse(ingredientExpiry);
+        } catch (Exception er) {
+            Toast.makeText(this, "Please enter a valid expiry date", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -81,7 +106,11 @@ public class EditAddIngredients extends AppCompatActivity {
         //Display a Message that the ingredient was saved. Takes user back to My Pantry screen
         if(saved) {
             Toast.makeText(this, "Ingredient saved!", Toast.LENGTH_SHORT).show();
-            finish();
+            //Resets the text in the text fields after ingredient was added.
+            editIngredientName.setText("");
+            editUnit.setText("");
+            editQuanity.setText("");
+            editExpiryDate.setText("");
         }
         //Displays appropriate message if the ingredient was not saved.
         else {

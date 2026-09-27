@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        int countIngredients = dbHelper.getIngredients().size();
-        ingredients.setText(countIngredients + " Ingredients in pantry");
         //Link My Pantry to My Pantry screen
         navigationView.setNavigationItemSelectedListener(item -> {
             //Check if user clicks "My Pantry"
@@ -85,4 +83,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });*/
     }
+    //Ensures that the ingredient count on home screen is updated
+    @Override
+    protected void onResume() {
+        super.onResume();;
+        updateIngredientCount();
+    }
+    //Method gets the pantry size and updates it on the home screen
+    private void updateIngredientCount() {
+        int countIngredients = dbHelper.getIngredients().size();
+        ingredients.setText(countIngredients + " Ingredients in pantry");
+    }
+
 }
